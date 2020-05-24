@@ -1,0 +1,105 @@
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Content {
+  width: 80%;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  z-index: 10;
+  position: absolute;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.modal-header h1 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.modal-header button {
+  position: absolute;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 30px;
+  font-weight: bold;
+  top: 5%;
+  right: 0;
+}
+
+.tag-container {
+  width: 100%;
+  padding-bottom: 1%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-container div {
+  box-sizing: content-box;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0.5vw;
+  text-align: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-body a {
+  color: blue;
+}
+
+.modal-body h4 {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.modal-body h5 {
+  padding-left: 1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.modal-body-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-body-description p {
+  font-size: 18px;
+  margin: 2rem 3rem;
+}
+
+.modal-body-description img {
+  width: 500;
+  height: 350;
+}

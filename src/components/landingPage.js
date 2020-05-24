@@ -1,0 +1,239 @@
+import React, { Component } from "react";
+
+import animations from "../animations/landingAnimations.js";
+
+import avatar_body from "../images/landing/avatar.png";
+import avatar_arm_1 from "../images/landing/arm1.png";
+import avatar_arm_2 from "../images/landing/arm2.png";
+import about_icon from "../images/landing/about_icon.png";
+import work_icon from "../images/landing/work_icon.png";
+import resume_icon from "../images/landing/resume_icon.png";
+import contact_icon from "../images/landing/contact_icon.png";
+
+class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      windowWidth: 0,
+      buttonClicked: false,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.onResize = this.onResize.bind(this);
+    this.onScroll = this.onScroll.bind(this);
+    this.updateDimensions = this.updateDimensions.bind(this);
+
+    this.selector = React.createRef();
+  }
+
+  handleClick(index) {
+    animations.handleClick(index, this.state.buttonClicked);
+    this.setState(() => {
+      return {
+        buttonClicked: true,
+      };
+    });
+    setTimeout(() => {
+      this.setState(() => {
+        return {
+          buttonClicked: false,
+        };
+      });
+    }, 900);
+
+    var button = document.querySelector("#container_" + index + " button");
+    var target = button.getAttribute("data-target");
+    setTimeout(() => {
+      document.getElementById(target).scrollIntoView({ behavior: "smooth" });
+    }, 500);
+  }
+
+  onResize() {
+    for (var i = 1; i < 4; i++) {
+      var canvas = document.getElementById("canvas_" + i);
+      var vmin = Math.min(window.innerWidth, window.innerHeight);
+      canvas.width = (45 / 100) * vmin;
+      canvas.height = (33 / 100) * vmin;
+    }
+  }
+
+  onScroll() {
+    var landing = this.selector.current.getBoundingClientRect();
+    var avatar = document.querySelector(".avatar");
+
+    // move avatar
+    if (landing.bottom >= window.innerHeight * 0.6) {
+      avatar.style.opacity =
+        (landing.bottom - window.innerHeight * 0.6) /
+        (window.innerHeight * 0.4);
+    } else avatar.style.opacity = 0;
+
+    if (this.state.windowWidth < 800) {
+      if (landing.bottom >= window.innerHeight * 0.6) {
+        var translateAmount =
+          -20 +
+          (1 -
+            (landing.bottom - window.innerHeight * 0.6) /
+              (window.innerHeight * 0.4)) *
+            200;
+        avatar.style.transform = "translate(" + translateAmount + "%, 30%)";
+      } else avatar.style.transform = "translate(200%, 30%)";
+    } else avatar.style.transform = "translate(-20%, 30%)";
+  }
+
+  updateDimensions() {
+    let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    this.setState({ windowWidth });
+  }
+
+  componentDidMount() {
+    // animations
+    if (window.innerWidth < 800) {
+      document.getElementById("c1").width = document.body.clientWidth;
+      document.getElementById("c2").width = 0;
+      animations.splashMobile();
+    } else animations.splash();
+
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
+
+    // event handlers
+    for (let i = 1; i < 5; i++) {
+      // mouse over
+      var buttonEm = document.querySelector("#container_" + i + " button");
+      buttonEm.addEventListener("mouseover", () => {
+        // change avatar opacity if scrolled
+        var avatar = document.querySelector(".avatar");
+        avatar.style.transition = "opacity 0.5s ease-in-out";
+        avatar.style.opacity = 1;
+        animations.handleMouseOver(i, this.state.buttonClicked);
+      });
+
+      // mouse out
+      buttonEm.addEventListener("mouseout", () => {
+        // change avatar opacity if scrolled
+        this.onScroll();
+        animations.handleMouseOut(i, this.state.buttonClicked);
+      });
+
+      // click
+      buttonEm.addEventListener("click", () => {
+        this.handleClick(i);
+      });
+    }
+
+    // canvas resize
+    window.addEventListener("resize", this.onResize);
+    this.onResize();
+
+    // window scroll
+    window.addEventListener("scroll", () => {
+      document.querySelector(".avatar").style.transition = "none";
+      this.onScroll();
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.onScroll);
+  }
+
+  render() {
+    return (
+      <div className="landing" ref={this.selector}>
+        <div className="welcome-container">
+          <div className="avatar">
+            <img className="body" src={avatar_body} alt="avatar body"></img>
+            <img
+              className="arm1"
+              id="arm1"
+              src={avatar_arm_1}
+              alt="avatar arm"
+            ></img>
+            <img
+              className="arm2"
+              id="arm2"
+              src={avatar_arm_2}
+              alt="avatar arm"
+            ></img>
+            <div className="ball-wrapper" id="ball-wrapper">
+              <div className="ball" id="ball">
+                <div className="ray-box">
+                  <div className="ray ray1"></div>
+                  <div className="ray ray2"></div>
+                  <div className="ray ray3"></div>
+                  <div className="ray ray4"></div>
+                  <div className="ray ray5"></div>
+                  <div className="ray ray6"></div>
+                  <div className="ray ray7"></div>
+                  <div className="ray ray8"></div>
+                  <div className="ray ray9"></div>
+                  <div className="ray ray10"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="welcome-text">
+            <h1 id="greeting">Hello!</h1>
+            <h3 id="introduction">
+              I'm Jeffrey Yang. <br />
+              Welcome to my personal website!
+            </h3>
+          </div>
+          <div className="welcome-drawer">
+            <div className="button-container" id="container_1">
+              <button id="button_1" data-target="about">
+                About
+              </button>
+              <img src={about_icon} alt="about"></img>
+              <canvas id="canvas_1"></canvas>
+            </div>
+
+            <div className="button-container" id="container_2">
+              <button id="button_2" data-target="projects">
+                My Work
+              </button>
+              <img src={work_icon} alt="work"></img>
+              <canvas id="canvas_2"></canvas>
+            </div>
+
+            <div className="button-container" id="container_3">
+              <button id="button_3" data-target="resume">
+                Resume
+              </button>
+              <img src={resume_icon} alt="resume"></img>
+              <canvas id="canvas_3"></canvas>
+            </div>
+
+            <div className="button-container" id="container_4">
+              <button id="button_4" data-target="contact">
+                Contact
+              </button>
+              <img src={contact_icon} alt="contact"></img>
+              <canvas id="canvas_4"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div id="animation-container">
+          <canvas
+            className="animation-board"
+            id="c1"
+            width={window.innerWidth / 2}
+            height={window.innerHeight}
+            resize="true"
+          ></canvas>
+          <canvas
+            className="animation-board"
+            id="c2"
+            width={window.innerWidth / 2}
+            height={window.innerHeight}
+            resize="true"
+          ></canvas>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Landing;

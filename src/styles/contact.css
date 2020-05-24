@@ -1,0 +1,318 @@
+.contact {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact a {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  text-decoration: none;
+}
+
+.contact h2,
+.contact h3 {
+  color: white;
+}
+
+.contact-btn {
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  position: relative;
+  padding: none;
+}
+
+.contact-btn:active,
+.contact-btn:active .contact-icon::before,
+.contact-btn:active .contact-icon::after,
+.contact-btn:active .contact-icon-line {
+  background: #396680;
+}
+
+.contact-btn-ripple {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+
+.contact-btn a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.contact-icon {
+  pointer-events: none;
+  width: 70%;
+  height: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #373838;
+}
+
+.contact-icon::before,
+.contact-icon::after {
+  content: "";
+  width: 2px;
+  height: 111%;
+  background-color: white;
+  position: absolute;
+  transform-origin: top center;
+  --angle: 52deg;
+}
+
+.contact-icon::before {
+  left: 0;
+  transform: translateX(-50%) rotate(calc(-1 * var(--angle)));
+}
+
+.contact-icon::after {
+  right: 0;
+  transform: translateX(50%) rotate(var(--angle));
+}
+
+.contact-icon-line {
+  content: "";
+  background-color: white;
+  width: 2px;
+  height: 82%;
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+  --angle: 55deg;
+}
+
+.contact-icon-line.before {
+  left: 0;
+  transform: translateX(-50%) rotate(var(--angle));
+}
+
+.contact-icon-line.after {
+  right: 0;
+  transform: translateX(50%) rotate(calc(-1 * var(--angle)));
+}
+
+.social-container {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 50%;
+  height: 35vh;
+}
+
+.social-container h3 {
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+  font-family: "TitilliumWeb";
+  font-size: 2vw;
+  font-weight: 600;
+  color: #d4d4d4;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5vw;
+}
+
+.social-links button {
+  outline: none;
+  border: none;
+  background: none;
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.social-links a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.social-links i {
+  pointer-events: none;
+  color: #d4d4d4;
+  font-size: 5vw;
+}
+
+.text-shadow {
+  opacity: 0;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px #fff, 0 0 30px var(--shadow-color),
+    0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color),
+    0 0 60px var(--shadow-color), 0 0 70px var(--shadow-color),
+    0 0 80px var(--shadow-color);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.transparent-text {
+  position: absolute;
+}
+
+.social-caption {
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  font-size: 1.3vw;
+  font-weight: 600;
+  line-height: 1.5vw;
+  text-align: center;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-links button:active .linkedin {
+  --hover-color: linear-gradient(180deg, #009cda, #0073b2);
+  --shadow-color: #319ed8;
+}
+
+.social-links button:active .github {
+  --hover-color: linear-gradient(-45deg, #000000 0%, #434343 74%);
+  --shadow-color: #6d6c6c;
+}
+
+.social-links button:active .facebook {
+  --hover-color: linear-gradient(#3b5998, #3b5998, #2b4170);
+  --shadow-color: #4d75cc;
+}
+
+.social-links button:active .instagram {
+  --hover-color: linear-gradient(
+    -45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  --shadow-color: #e05f72;
+}
+
+.social-links button:active .steam {
+  --hover-color: linear-gradient(
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 60%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  --shadow-color: #265173;
+}
+
+.social-links button:active .origin {
+  --hover-color: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+  --shadow-color: #ff7030;
+}
+
+.social-links button:active .discord {
+  --hover-color: linear-gradient(-30deg, #7289da 0%, #6a93cb 60%, #a4bfef 100%);
+  --shadow-color: #93a8f5;
+}
+
+.social-links button:active .transparent-text {
+  background: var(--hover-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-links button:active .text-shadow {
+  opacity: 1;
+}
+
+.social-links button:active .social-caption {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .social-links button:hover .linkedin {
+    --hover-color: linear-gradient(180deg, #009cda, #0073b2);
+    --shadow-color: #319ed8;
+  }
+
+  .social-links button:hover .github {
+    --hover-color: linear-gradient(-45deg, #000000 0%, #434343 74%);
+    --shadow-color: #6d6c6c;
+  }
+
+  .social-links button:hover .facebook {
+    --hover-color: linear-gradient(#3b5998, #3b5998, #2b4170);
+    --shadow-color: #4d75cc;
+  }
+
+  .social-links button:hover .instagram {
+    --hover-color: linear-gradient(
+      -45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+    --shadow-color: #e05f72;
+  }
+
+  .social-links button:hover .steam {
+    --hover-color: linear-gradient(
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 60%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    --shadow-color: #265173;
+  }
+
+  .social-links button:hover .origin {
+    --hover-color: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+    --shadow-color: #ff7030;
+  }
+
+  .social-links button:hover .discord {
+    --hover-color: linear-gradient(
+      -30deg,
+      #7289da 0%,
+      #6a93cb 60%,
+      #a4bfef 100%
+    );
+    --shadow-color: #93a8f5;
+  }
+
+  .social-links button:hover .transparent-text {
+    background: var(--hover-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .social-links button:hover .text-shadow {
+    opacity: 1;
+  }
+
+  .social-links button:hover .social-caption {
+    opacity: 1;
+  }
+}

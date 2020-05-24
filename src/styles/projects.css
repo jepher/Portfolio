@@ -1,0 +1,232 @@
+.projects {
+  z-index: 2;
+  position: relative;
+  margin-top: 10vh;
+  padding: 5% 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1d1f20;
+  overflow: hidden;
+}
+
+#projects-title .section-title-glow {
+  background: #fe3a80;
+}
+
+#projects-title .section-title-shadow {
+  color: #ff005b;
+}
+
+#projects-title .section-title-text {
+  color: #4a4a4a;
+}
+
+.projects-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-container {
+  flex-basis: 25%;
+  margin: 0 4%;
+  margin-bottom: 4%;
+  display: flex;
+  --borderWidth: 5px;
+  background: #1d1f20;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+
+.project-container:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.project-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  width: 100%;
+  text-decoration: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.img-fluid-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.project-img-fluid {
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.project-container:active .project-img-fluid {
+  transform: scale(1.3);
+}
+
+.project-caption {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Merriweather Sans", "Segoe UI", "Roboto", "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.3vw;
+  font-weight: 600;
+  line-height: 2vw;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(230, 67, 67, 0.9);
+  transition: opacity 0.25s ease;
+}
+
+.project-container:active .project-caption {
+  opacity: 1;
+}
+
+.spotlight-container {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.spotlight {
+  width: 6vw;
+  height: 3vw;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 0px 30px 15px rgba(255, 255, 255, 0.4);
+  transition: all 0.5s ease-in-out;
+}
+
+.beam-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.spotlight-beam-1 {
+  width: 0%;
+  height: 500%;
+  position: absolute;
+  bottom: -50%;
+  border-radius: 30% 30% 0 0;
+  box-shadow: 0px 0px 35px 50px rgba(255, 255, 255, 0.4);
+  transform: perspective(150px) rotateX(-30deg);
+  transform-origin: center;
+}
+
+.spotlight-beam-2 {
+  width: 0;
+  height: 500%;
+  position: absolute;
+  bottom: -50%;
+  opacity: 0.8;
+  box-shadow: 0px 0px 20px 35px rgba(255, 255, 255, 0.6);
+  transform: perspective(175px) rotateX(-30deg);
+  transform-origin: center;
+}
+
+.spotlight-beam-3 {
+  width: 100%;
+  height: 250%;
+  position: absolute;
+  bottom: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.75) 25%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: perspective(150px) rotateX(-30deg);
+  transform-origin: bottom center;
+}
+
+@media (max-width: 800px) {
+  .projects-title {
+    order: 0;
+  }
+
+  .projects-grid {
+    order: 3;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .project-container {
+    width: 50%;
+    margin-bottom: 5%;
+  }
+
+  .spotlight-container {
+    order: 1;
+    top: 50vh;
+  }
+}
+
+@media (hover: hover) {
+  .project-container:hover {
+    cursor: pointer;
+  }
+
+  .project-container:hover .project-caption {
+    opacity: 1;
+  }
+
+  .project-container:hover .project-img-fluid {
+    transform: scale(1.3);
+  }
+}
