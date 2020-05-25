@@ -261,6 +261,7 @@
 
 .welcome-drawer img {
   z-index: 1;
+  opacity: 0;
   height: 80%;
   position: absolute;
   object-fit: contain;
