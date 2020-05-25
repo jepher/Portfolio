@@ -60,7 +60,7 @@ class About extends Component {
 
   render() {
     return (
-      <div className="about" ref={this.selector}>
+      <div className="about" id="about" ref={this.selector}>
         <div className="about-container">
           <div className="section-title" id="about-title">
             <div className="section-title-glow"></div>

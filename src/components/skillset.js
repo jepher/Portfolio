@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ProgressBar extends Component {
+class Skillset extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,8 +39,12 @@ class ProgressBar extends Component {
     });
 
     // toggle overlay
+    document
+      .querySelectorAll("#" + sectionId + " .skill-btn-overlay")
+      .forEach((overlay) => {
+        overlay.classList.remove("active");
+      });
     if (this.state.progressBarOpen) btn.childNodes[0].classList.add("active");
-    else btn.childNodes[0].classList.remove("active");
   }
 
   renderButtons() {
@@ -137,4 +141,4 @@ class ProgressBar extends Component {
   }
 }
 
-export default ProgressBar;
+export default Skillset;

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Logo from "./logo";
+
 class Navbar extends Component {
   onScroll() {
     var navbar = document.getElementById("navbar");
@@ -9,19 +11,21 @@ class Navbar extends Component {
     else navbar.style.opacity = 1;
   }
 
+  onClick(e, link) {
+    e.preventDefault();
+
+    document.querySelector(link.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
   componentDidMount() {
     // hide navbar
     document.getElementById("navbar").style.opacity = 0;
 
     // navbar links
-    document.querySelectorAll(".navbar a").forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
-      });
+    document.querySelectorAll(".navbar-link").forEach((anchor) => {
+      anchor.addEventListener("click", (e) => this.onClick(e, anchor));
     });
 
     // navbar scroll listener
@@ -33,6 +37,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar" id="navbar">
+        <Logo></Logo>
         <nav className="navbar-link-container">
           <ul>
             <li>

@@ -1,5 +1,4 @@
 .about {
-  margin-top: 10vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,6 +7,7 @@
 }
 
 .about-container {
+  padding: 5% 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -15,8 +15,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  background-color: #57cfff;
-  padding-bottom: 5%;
+  background-color: #1d1f20;
 }
 
 #about-title .section-title-glow {
@@ -34,11 +33,12 @@
 .about-body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .about-body img {
   width: 30%;
+  border-radius: 10%;
 }
 
 .about-description {
@@ -49,12 +49,21 @@
   justify-content: center;
   align-items: center;
   padding: 3rem;
+  padding-top: 0;
+}
+
+@media (max-width: 600px) {
+  .about-description {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .about-description p {
-  font-size: 18px;
+  font-family: "Montserrat";
+  font-size: 1.3rem;
   font-weight: 300;
-  line-height: 40px;
+  line-height: 2.5rem;
   color: white;
 
   user-select: none;
@@ -102,6 +111,7 @@
 @media (max-width: 1000px) {
   .about-body {
     flex-direction: column;
+    align-items: center;
   }
 
   .about-body img {
@@ -110,5 +120,9 @@
 
   .about-description {
     width: 80%;
+  }
+
+  .about-description p {
+    padding-top: 3rem;
   }
 }

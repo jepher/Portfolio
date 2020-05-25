@@ -1,9 +1,10 @@
 .resume {
   width: 100%;
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 
 .resume-container {
+  padding: 5% 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -13,6 +14,7 @@
   position: relative;
   background: #27221f;
   color: white;
+  font-family: "IBMPlexSans";
 }
 
 #resume-title .section-title-glow {
@@ -28,8 +30,10 @@
 }
 
 .resume-header {
-  width: 100%;
+  width: 95%;
   font-size: 4rem;
+  font-family: "Exo2";
+  padding-left: 5%;
 }
 
 @media (max-width: 450px) {
@@ -43,16 +47,24 @@
   font-size: 16px;
 }
 
+.resume-container hr {
+  border-top: 3px solid #e22947;
+  width: 60%;
+  margin: 3rem 0;
+}
+
 .resume-education {
   width: 80%;
   padding: 0 10%;
 }
 
 .resume-education h4 {
+  font-family: "IBMPlexSans";
   margin-bottom: 0;
 }
 
 .resume-education h5 {
+  font-family: "IBMPlexSans";
   margin-top: 0.3rem;
 }
 
@@ -65,14 +77,16 @@
 
 .timeline-selected {
   position: absolute;
+  min-height: 50px;
   left: 0;
-  background: red;
+  background: #ed4040;
   transition: transform 0.3s;
 }
 
 .timeline {
   position: relative;
   width: 30%;
+  overflow-y: auto;
 }
 
 .timeline ul {
@@ -80,7 +94,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -90,6 +104,7 @@
 .timeline li {
   width: 100%;
   flex-grow: 1;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,12 +113,14 @@
 .timeline button {
   width: 100%;
   height: 100%;
+  padding: 0;
   outline: none;
   border: none;
   border-left: 2px solid gray;
   background: none;
   color: white;
-  font-size: 16px;
+  font-size: 1.2rem;
+  font-family: "IBMPlexSans";
 }
 
 .timeline button:active {
@@ -112,23 +129,43 @@
 
 .timeline .active {
   background: #4a4a48;
-  color: red;
+  color: #ed4040;
 }
 
 .timeline-description {
   width: 90%;
   height: 100%;
-  padding: 0 5%;
+  padding: 5%;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.timeline-event-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #b5b1b0;
+}
+
+.timeline-description-organization {
+  text-decoration: none;
+  color: #ed4040;
+}
+
+.timeline-event-duration {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #b5b1b0;
 }
 
 .timeline-description ul {
   padding: 1em;
+  font-size: 1.1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 670px) {
   .timeline-container {
     height: unset;
     flex-direction: column;
@@ -136,16 +173,23 @@
   .timeline {
     width: 100%;
     height: 3rem;
+    overflow-x: auto;
+  }
+
+  .timeline-selected {
+    min-width: 140px;
+    min-height: initial;
   }
 
   .timeline ul {
-    /* outline: 2px solid red; */
     height: 100%;
     flex-direction: row;
   }
 
   .timeline li {
     height: 100%;
+    min-width: 140px;
+    min-height: initial;
   }
   .timeline button {
     border-left: none;
@@ -179,11 +223,16 @@
 
 .skillset-title {
   font-size: 2.5rem;
+  font-family: "Montserrat";
+  line-height: 2.5rem;
   padding-bottom: 2rem;
+  text-align: center;
 }
 
 .skill-btn-grid {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 3rem;
   padding: 0;
 }
@@ -193,9 +242,11 @@
   outline: none;
   display: flex;
   width: 5vw;
+  min-width: 50px;
   height: 5vw;
+  min-height: 50px;
   padding: 0;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   position: relative;
   border-radius: 50%;
   background-color: white;
@@ -244,7 +295,6 @@
 .progress-bar-container {
   height: 20%;
   width: 50%;
-  min-width: 450px;
   margin-bottom: 5%;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
@@ -255,6 +305,12 @@
   position: relative;
 }
 
+@media (max-width: 800px) {
+  .progress-bar-container {
+    width: 80%;
+  }
+}
+
 .progress-bar-container-inner {
   position: absolute;
   width: 120%;
@@ -263,8 +319,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .progress-bar-container-inner {
+    width: 100vw;
+  }
+}
+
 .progress-bar-container h4 {
-  margin-right: 3rem;
   vertical-align: middle;
 }
 
@@ -280,7 +341,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   overflow: hidden;
 }
 
@@ -288,7 +349,6 @@
   background-color: #d8d8d856;
   border-radius: 20px;
   position: relative;
-  /* margin: 15px 0; */
   height: 20%;
   width: 50%;
 }

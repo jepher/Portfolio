@@ -357,6 +357,13 @@ function assemblePage() {
           document.querySelector(".gradient-background").style.backgroundColor =
             "#05022b";
           document.querySelector(".particles-background").style.opacity = 1;
+          for (var i = 0; i < 4; i++) {
+            var canvas = document.getElementById("canvas_" + i);
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+          }
         },
       },
       "-=1000"
@@ -387,6 +394,9 @@ function assemblePage() {
     );
 
   // slide in buttons
+  anime.set(".drawer .logo-btn", {
+    translateX: "-200%",
+  });
   anime.set(".menu-btn", {
     translateX: "100%",
   });
@@ -413,6 +423,15 @@ function assemblePage() {
     .add(
       {
         targets: ".menu-btn",
+        translateX: "0",
+        duration: 500,
+        easing: "easeOutQuad",
+      },
+      "-=1500"
+    )
+    .add(
+      {
+        targets: ".drawer .logo-btn",
         translateX: "0",
         duration: 500,
         easing: "easeOutQuad",

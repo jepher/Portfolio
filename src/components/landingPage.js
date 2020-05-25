@@ -16,6 +16,32 @@ class Landing extends Component {
     this.state = {
       windowWidth: 0,
       buttonClicked: false,
+      buttons: [
+        {
+          text: "About",
+          target: "about",
+          img: about_icon,
+          alt: "About",
+        },
+        {
+          text: "My Work",
+          target: "projects",
+          img: work_icon,
+          alt: "Work",
+        },
+        {
+          text: "Resume",
+          target: "resume",
+          img: resume_icon,
+          alt: "Resume",
+        },
+        {
+          text: "Contact",
+          target: "contact",
+          img: contact_icon,
+          alt: "Contact",
+        },
+      ],
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -49,11 +75,12 @@ class Landing extends Component {
   }
 
   onResize() {
-    for (var i = 1; i < 4; i++) {
+    for (var i = 0; i < 4; i++) {
       var canvas = document.getElementById("canvas_" + i);
-      var vmin = Math.min(window.innerWidth, window.innerHeight);
-      canvas.width = (45 / 100) * vmin;
-      canvas.height = (33 / 100) * vmin;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
     }
   }
 
@@ -86,19 +113,44 @@ class Landing extends Component {
     this.setState({ windowWidth });
   }
 
+  renderButtons() {
+    var buttons = [];
+
+    for (let i = 0; i < this.state.buttons.length; i++) {
+      let btn = this.state.buttons[i];
+      buttons.push(
+        <div
+          className="button-container"
+          id={"container_" + i}
+          key={btn.text.toLowerCase()}
+        >
+          <button id={"button_" + i} data-target={btn.target}>
+            {btn.text}
+          </button>
+          <img src={btn.img} alt={btn.alt}></img>
+          <canvas id={"canvas_" + i}></canvas>
+        </div>
+      );
+    }
+
+    return buttons;
+  }
+
   componentDidMount() {
     // animations
     if (window.innerWidth < 800) {
+      // mobile
       document.getElementById("c1").width = document.body.clientWidth;
       document.getElementById("c2").width = 0;
       animations.splashMobile();
-    } else animations.splash();
+    } // computer
+    else animations.splash();
 
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
 
     // event handlers
-    for (let i = 1; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       // mouse over
       var buttonEm = document.querySelector("#container_" + i + " button");
       buttonEm.addEventListener("mouseover", () => {
@@ -180,39 +232,7 @@ class Landing extends Component {
               Welcome to my personal website!
             </h3>
           </div>
-          <div className="welcome-drawer">
-            <div className="button-container" id="container_1">
-              <button id="button_1" data-target="about">
-                About
-              </button>
-              <img src={about_icon} alt="about"></img>
-              <canvas id="canvas_1"></canvas>
-            </div>
-
-            <div className="button-container" id="container_2">
-              <button id="button_2" data-target="projects">
-                My Work
-              </button>
-              <img src={work_icon} alt="work"></img>
-              <canvas id="canvas_2"></canvas>
-            </div>
-
-            <div className="button-container" id="container_3">
-              <button id="button_3" data-target="resume">
-                Resume
-              </button>
-              <img src={resume_icon} alt="resume"></img>
-              <canvas id="canvas_3"></canvas>
-            </div>
-
-            <div className="button-container" id="container_4">
-              <button id="button_4" data-target="contact">
-                Contact
-              </button>
-              <img src={contact_icon} alt="contact"></img>
-              <canvas id="canvas_4"></canvas>
-            </div>
-          </div>
+          <div className="welcome-drawer">{this.renderButtons()}</div>
         </div>
 
         <div id="animation-container">

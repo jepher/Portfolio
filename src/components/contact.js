@@ -21,7 +21,7 @@ class Contact extends Component {
 
   render() {
     return (
-      <div className="contact">
+      <div className="contact" id="contact">
         <h2>Thanks for visiting!</h2>
         <button className="contact-btn" aria-label="Send Email">
           <div className="contact-btn-ripple"></div>
@@ -91,37 +91,6 @@ class Contact extends Component {
               <i className="fab fa-instagram text-shadow instagram" />
               <i className="fab fa-instagram transparent-text instagram" />
               <div className="social-caption">jephayy</div>
-            </button>
-          </div>
-
-          <h3>Gamer Info</h3>
-          <div className="social-links" style={{ padding: "0 8vw" }}>
-            {/*Steam*/}
-            <button>
-              <a
-                href="https://steamcommunity.com/id/jephay/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                {" "}
-              </a>
-              <i className="fab fa-steam text-shadow steam" />
-              <i className="fab fa-steam transparent-text steam" />
-              <div className="social-caption">jephay</div>
-            </button>
-
-            {/*Origin*/}
-            <button>
-              <i className="icon-origin text-shadow origin" />
-              <i className="icon-origin transparent-text origin" />
-              <div className="social-caption">Jephay</div>
-            </button>
-
-            {/*Discord*/}
-            <button>
-              <i className="fab fa-discord text-shadow discord" />
-              <i className="fab fa-discord transparent-text discord" />
-              <div className="social-caption">Jeph#0274</div>
             </button>
           </div>
         </div>

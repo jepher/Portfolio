@@ -10,6 +10,7 @@ class Timeline extends Component {
       events: [
         {
           organization: "NYU CREATE Lab",
+          page: "https://create.nyu.edu/",
           position: "Project Manager",
           time: "Aug - Sep 2019",
           description: [
@@ -28,6 +29,7 @@ class Timeline extends Component {
         },
         {
           organization: "RUAutonomous",
+          page: "https://aiaa.rutgers.edu/proj2.html",
           position: "Imaging Subteam",
           time: "Sep 2019 - Present",
           description: [
@@ -48,6 +50,7 @@ class Timeline extends Component {
         },
         {
           organization: "IVI Lab",
+          page: "https://ivi.cs.rutgers.edu/",
           position: "Undergraduate Research Fellow",
           time: "Jan 2019 - Present",
           description: [
@@ -92,7 +95,8 @@ class Timeline extends Component {
   renderSelectedBar() {
     var barSize = 100 / this.state.events.length;
     var thickness = "2px";
-    if (this.state.windowWidth <= 600)
+    // horizontal
+    if (this.state.windowWidth <= 670)
       return (
         <span
           className="timeline-selected"
@@ -105,6 +109,7 @@ class Timeline extends Component {
           }}
         ></span>
       );
+    // vertical
     else
       return (
         <span
@@ -135,6 +140,7 @@ class Timeline extends Component {
   }
 
   render() {
+    var currentEvent = this.state.events[this.state.currentEvent];
     return (
       <div className="timeline-container">
         <div className="timeline">
@@ -155,12 +161,22 @@ class Timeline extends Component {
         </div>
 
         <div className="timeline-description">
-          <span>
-            {this.state.events[this.state.currentEvent].position} @{" "}
-            {this.state.events[this.state.currentEvent].organization}
-          </span>
-          <span>{this.state.events[this.state.currentEvent].time}</span>
-          <ul>{this.state.events[this.state.currentEvent].description}</ul>
+          <div className="timeline-event-title">
+            <span className="timeline-description-position">
+              {currentEvent.position}
+            </span>{" "}
+            @{" "}
+            <a
+              className="timeline-description-organization"
+              href={currentEvent.page}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {currentEvent.organization}
+            </a>
+          </div>
+          <div className="timeline-event-duration">{currentEvent.time}</div>
+          <ul>{currentEvent.description}</ul>
         </div>
       </div>
     );

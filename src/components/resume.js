@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
 import Timeline from "./timeline";
-import ProgressBar from "./progressBar";
+import Skillset from "./skillset";
 
 import java_icon from "../images/resume/java_icon.png";
 import python_icon from "../images/resume/python_icon.png";
@@ -64,7 +64,7 @@ class Resume extends Component {
     Modal.setAppElement("#root");
 
     return (
-      <div className="resume" ref={this.selector}>
+      <div className="resume" id="resume" ref={this.selector}>
         <div className="resume-container">
           <div className="section-title" id="resume-title">
             <div className="section-title-glow"></div>
@@ -79,14 +79,14 @@ class Resume extends Component {
             <p>GPA: 4.00 / 4.00</p>
           </div>
 
-          <hr style={{ borderTop: "3px solid #e22947" }} />
+          <hr />
           <h2 className="resume-header">Experience</h2>
           <Timeline></Timeline>
 
-          <hr style={{ borderTop: "3px solid #e22947" }} />
+          <hr />
           <h2 className="resume-header">Skills</h2>
           <div className="skills-container">
-            <ProgressBar
+            <Skillset
               title="Programming"
               buttons={[
                 [java_icon, "java"],
@@ -98,9 +98,9 @@ class Resume extends Component {
                 ["Python", 85],
                 ["C#", 80],
               ]}
-            ></ProgressBar>
+            ></Skillset>
 
-            <ProgressBar
+            <Skillset
               title="Web Development"
               buttons={[
                 [javascript_icon, "javascript"],
@@ -118,9 +118,9 @@ class Resume extends Component {
                 ["React.js", 65],
                 ["MongoDB", 40],
               ]}
-            ></ProgressBar>
+            ></Skillset>
 
-            <ProgressBar
+            <Skillset
               title="Technologies"
               buttons={[
                 [unity_icon, "unity"],
@@ -134,7 +134,7 @@ class Resume extends Component {
                 ["Tensorflow", 60],
                 ["Git", 50],
               ]}
-            ></ProgressBar>
+            ></Skillset>
           </div>
         </div>
       </div>

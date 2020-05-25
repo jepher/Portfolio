@@ -4,6 +4,16 @@
 
 .ReactModal__Content {
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 0;
+}
+
+@media (max-width: 500px) {
+  .ReactModal__Content {
+    width: 100%;
+  }
 }
 
 .ReactModal__Overlay {
@@ -24,9 +34,6 @@
 .modal-header {
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
-  align-items: flex-start;
-  justify-content: center;
   border-bottom: 1px solid black;
 }
 
@@ -36,17 +43,21 @@
   margin-bottom: 1rem;
 }
 
-.modal-header button {
-  position: absolute;
-  margin-right: 1rem;
+.modal-close-btn {
   cursor: pointer;
   border: none;
   outline: none;
   background: none;
   font-size: 30px;
   font-weight: bold;
+  position: absolute;
   top: 5%;
-  right: 0;
+  right: 5%;
+}
+
+.project-info {
+  display: flex;
+  align-items: center;
 }
 
 .tag-container {
@@ -61,16 +72,108 @@
   border: 2px solid red;
   border-radius: 5px;
   padding: 0.3rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 0.5vw;
+  margin: 0;
+  margin-right: 2%;
   text-align: center;
+}
+
+.modal-btn-container {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  padding-top: 0;
+}
+
+.modal-btn {
+  width: 7vw;
+  min-width: 50px;
+  max-width: 75px;
+  height: 7vw;
+  min-height: 50px;
+  max-height: 75px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  position: relative;
+}
+
+.modal-btn:first-of-type {
+  margin-right: 3rem;
+}
+
+.modal-btn.unavailable {
+  background: #e05858;
+}
+
+.modal-btn a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.modal-btn i {
+  color: #5aa1f2;
+  font-size: 3vw;
+}
+
+.modal-btn.unavailable i,
+.modal-btn.unavailable .btn-caption {
+  color: #b5b5b5;
+}
+
+@media (max-width: 700px) {
+  .modal-btn i {
+    font-size: 20px;
+  }
+}
+
+.btn-caption {
+  pointer-events: none;
+  color: black;
+  font-weight: 600;
+  position: absolute;
+  width: 200%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .modal-btn:hover .btn-caption {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .btn-caption {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .modal-btn-container {
+    order: 0;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0;
+    padding-bottom: 2.5rem;
+  }
+  .tag-container {
+    order: 1;
+  }
 }
 
 .modal-body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
 }
 
 .modal-body a {
@@ -100,6 +203,16 @@
 }
 
 .modal-body-description img {
-  width: 500;
-  height: 350;
+  width: 500px;
+}
+
+@media (max-width: 700px) {
+  .modal-body-description p {
+    font-size: 18px;
+    margin: 2rem 0;
+  }
+
+  .modal-body-description img {
+    width: 100%;
+  }
 }

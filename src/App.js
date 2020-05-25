@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import Particles from "react-particles-js";
 
 import "./styles/App.css";
+import "./styles/logo.css";
 import "./styles/navbar.css";
 import "./styles/drawer.css";
 import "./styles/landingPage.css";
@@ -68,22 +69,16 @@ function App() {
         <Drawer></Drawer>
       </Suspense>
 
-      <Landing></Landing>
+      <div id="landing">
+        <Landing></Landing>
+      </div>
 
       <main className="page-content">
         <Suspense fallback={<div>Loading...</div>}>
-          <div id="about">
-            <About></About>
-          </div>
-          <div id="projects">
-            <Projects></Projects>
-          </div>
-          <div id="resume">
-            <Resume></Resume>
-          </div>
-          <div id="contact">
-            <Contact></Contact>
-          </div>{" "}
+          <About></About>
+          <Projects></Projects>
+          <Resume></Resume>
+          <Contact></Contact>
         </Suspense>
       </main>
     </div>

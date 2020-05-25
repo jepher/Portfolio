@@ -1,6 +1,8 @@
 .contact {
   z-index: 2;
   position: relative;
+  padding-bottom: 5%;
+  margin: 20vh 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,12 +21,18 @@
 
 .contact h2,
 .contact h3 {
+  font-family: "TitilliumWeb";
+  text-align: center;
   color: white;
 }
 
 .contact-btn {
   width: 13vw;
+  max-width: 150px;
+  min-width: 80px;
   height: 13vw;
+  max-height: 150px;
+  min-height: 80px;
   border-radius: 50%;
   outline: none;
   border: none;
@@ -119,21 +127,27 @@
   flex-direction: column;
   padding: 0;
   width: 50%;
-  height: 35vh;
+}
+
+@media (max-width: 800px) {
+  .social-container {
+    width: 100%;
+  }
 }
 
 .social-container h3 {
   margin-top: 2vh;
   margin-bottom: 1vh;
   font-family: "TitilliumWeb";
-  font-size: 2vw;
+  font-size: 2rem;
   font-weight: 600;
   color: #d4d4d4;
 }
 
 .social-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 0 5vw;
 }
 
@@ -142,7 +156,9 @@
   border: none;
   background: none;
   width: 5vw;
+  min-width: 50px;
   height: 5vw;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,6 +178,12 @@
   pointer-events: none;
   color: #d4d4d4;
   font-size: 5vw;
+}
+
+@media (max-width: 1000px) {
+  .social-links i {
+    font-size: 50px;
+  }
 }
 
 .text-shadow {
@@ -217,25 +239,6 @@
   --shadow-color: #e05f72;
 }
 
-.social-links button:active .steam {
-  --hover-color: linear-gradient(
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 60%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  --shadow-color: #265173;
-}
-
-.social-links button:active .origin {
-  --hover-color: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
-  --shadow-color: #ff7030;
-}
-
-.social-links button:active .discord {
-  --hover-color: linear-gradient(-30deg, #7289da 0%, #6a93cb 60%, #a4bfef 100%);
-  --shadow-color: #93a8f5;
-}
-
 .social-links button:active .transparent-text {
   background: var(--hover-color);
   -webkit-background-clip: text;
@@ -276,30 +279,6 @@
       #bc1888 100%
     );
     --shadow-color: #e05f72;
-  }
-
-  .social-links button:hover .steam {
-    --hover-color: linear-gradient(
-      rgba(2, 0, 36, 1) 0%,
-      rgba(9, 9, 121, 1) 60%,
-      rgba(0, 212, 255, 1) 100%
-    );
-    --shadow-color: #265173;
-  }
-
-  .social-links button:hover .origin {
-    --hover-color: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
-    --shadow-color: #ff7030;
-  }
-
-  .social-links button:hover .discord {
-    --hover-color: linear-gradient(
-      -30deg,
-      #7289da 0%,
-      #6a93cb 60%,
-      #a4bfef 100%
-    );
-    --shadow-color: #93a8f5;
   }
 
   .social-links button:hover .transparent-text {

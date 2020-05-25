@@ -13,8 +13,23 @@
   align-items: center;
 }
 
+.drawer .logo-btn {
+  pointer-events: all;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: none;
+  margin-top: 1vh;
+  margin-left: 3vh;
+  transform: translateX(-200%);
+}
+
 .menu-btn {
-  position: absolute;
+  outline: none;
+  border: none;
+  padding: 0;
+  position: fixed;
+  top: 0;
   right: 0;
   display: flex;
   justify-content: center;
@@ -24,7 +39,7 @@
   width: 6vh;
   height: 6vh;
   background: #57cfff;
-  border-radius: 0 0 0 20%;
+  border-radius: 20% 0 0 20%;
   transform: translateX(100%);
 }
 
@@ -49,7 +64,7 @@
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: top 0.2s ease-in 0.2s, transform 0.2s ease-in;
   transform-origin: center;
-  transform: translateY(-2.5px);
+  transform: translate(-50%, -2.5px);
 }
 
 .menu-btn-burger::before {
@@ -72,11 +87,11 @@
 }
 
 .menu-btn.open .menu-btn-burger::before {
-  transform: translateY(-2.5px) rotate(135deg);
+  transform: translate(-50%, -2.5px) rotate(135deg);
 }
 
 .menu-btn.open .menu-btn-burger::after {
-  transform: translateY(-2.5px) rotate(225deg);
+  transform: translate(-50%, -2.5px) rotate(225deg);
 }
 
 .drawer-link-container {
@@ -111,6 +126,7 @@
   align-items: center;
   margin-bottom: 10%;
   pointer-events: all;
+  font-family: "Nunito";
   font-size: 3rem;
   text-decoration: none;
   color: white;
@@ -128,7 +144,7 @@
   }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 831px) {
   .drawer {
     display: none;
   }

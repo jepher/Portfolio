@@ -1,33 +1,11 @@
 import React, { Component } from "react";
 
+import Logo from "./logo";
+
 class Drawer extends Component {
   state = {
     drawerOpen: false,
   };
-
-  componentDidMount() {
-    // hamburger click listener
-    var btn = document.querySelector(".menu-btn");
-    btn.addEventListener("click", () => {
-      this.toggleDrawer();
-
-      this.setState(() => {
-        return {
-          drawerOpen: !this.state.drawerOpen,
-        };
-      });
-    });
-
-    // drawer links
-    var btns = document.querySelectorAll(".drawer a");
-    for (let btn of btns) {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        this.onClick(btn);
-      });
-    }
-  }
 
   toggleDrawer() {
     var btn = document.querySelector(".menu-btn");
@@ -55,12 +33,36 @@ class Drawer extends Component {
     });
   }
 
+  componentDidMount() {
+    // hamburger click listener
+    var btn = document.querySelector(".menu-btn");
+    btn.addEventListener("click", () => {
+      this.toggleDrawer();
+
+      this.setState(() => {
+        return {
+          drawerOpen: !this.state.drawerOpen,
+        };
+      });
+    });
+
+    // drawer links
+    document.querySelectorAll(".drawer-link-container a").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        this.onClick(btn);
+      });
+    });
+  }
+
   render() {
     return (
       <nav className="drawer">
-        <div className="menu-btn">
+        <Logo></Logo>
+        <button className="menu-btn">
           <div className="menu-btn-burger"></div>
-        </div>
+        </button>
         <ul className="drawer-link-container">
           <li>
             <a className="drawer-link" href="#about">
