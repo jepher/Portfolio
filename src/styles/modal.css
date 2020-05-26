@@ -127,6 +127,12 @@
   }
 }
 
+@media (min-width: 1070px) {
+  .modal-btn i {
+    font-size: 35px;
+  }
+}
+
 .btn-caption {
   pointer-events: none;
   color: black;
