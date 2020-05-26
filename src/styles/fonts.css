@@ -24,11 +24,6 @@
 }
 
 @font-face {
-  font-family: "Righteous";
-  src: url("../fonts/Righteous-Regular.ttf");
-}
-
-@font-face {
   font-family: "IBMPlexSans";
   src: url("../fonts/IBMPlexSans-Regular.ttf");
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Modal from "react-modal";
+
 import Timeline from "./timeline";
 import Skillset from "./skillset";
 
@@ -61,8 +61,6 @@ class Resume extends Component {
   }
 
   render() {
-    Modal.setAppElement("#root");
-
     return (
       <div className="resume" id="resume" ref={this.selector}>
         <div className="resume-container">
