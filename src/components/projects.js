@@ -28,7 +28,7 @@ class Projects extends Component {
           header: "Dio's Bizarre Adventure",
           tags: ["Javascript", "Game Development"],
           code: "https://github.com/jepher/jojo-game",
-          project: null,
+          project: "https://jepher.github.io/jojo-game/",
           body: (
             <div className="modal-body-description">
               <p>
@@ -62,7 +62,7 @@ class Projects extends Component {
           header: "Word of God",
           tags: ["Javascript", "Game Development"],
           code: "https://github.com/jepher/word-of-god",
-          project: null,
+          project: "https://jepher.github.io/word-of-god/",
           body: (
             <div className="modal-body-description">
               <p>
