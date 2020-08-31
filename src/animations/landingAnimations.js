@@ -1,5 +1,28 @@
 import anime from "animejs";
 
+// get colors
+var primary = getComputedStyle(document.documentElement).getPropertyValue(
+  "--primary"
+);
+var primaryRipple = getComputedStyle(document.documentElement).getPropertyValue(
+  "--primary-ripple"
+);
+var primaryParticle = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--primary-particle");
+var secondary = getComputedStyle(document.documentElement).getPropertyValue(
+  "--secondary"
+);
+var secondaryRipple = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--secondary-ripple");
+var secondaryParticle = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--secondary-particle");
+var background = getComputedStyle(document.documentElement).getPropertyValue(
+  "--background"
+);
+
 var Circle = function (opts) {
   extend(this, opts);
 };
@@ -66,8 +89,8 @@ function splash() {
   var cH = c1.height;
   var canvasses = [ctx1, ctx2];
   var animationColors = [
-    ["#57cfff", "#0f73f5", "#0026ff"],
-    ["#ff6445", "#f50f0f", "#c21717"],
+    [primary, primaryRipple, primaryParticle],
+    [secondary, secondaryRipple, secondaryParticle],
   ];
   var bgColor = ["black", "black"];
   var targetR = Math.sqrt(Math.pow(cW, 2) + Math.pow(cH / 2, 2));
@@ -205,7 +228,7 @@ function splashMobile() {
   var ctx = c.getContext("2d");
   var cW = c.width;
   var cH = c.height;
-  var animationColors = ["#57cfff", "#0f73f5", "#0026ff"];
+  var animationColors = [primary, primaryRipple, primaryParticle];
   var bgColor = "black";
   var targetR = Math.sqrt(Math.pow(cW, 2) + Math.pow(cH / 2, 2));
   var rippleSize = targetR * 0.3;
@@ -354,8 +377,9 @@ function assemblePage() {
         easing: "easeOutBounce",
         duration: 2000,
         complete: () => {
-          document.querySelector(".gradient-background").style.backgroundColor =
-            "#05022b";
+          document.querySelector(
+            ".gradient-background"
+          ).style.backgroundColor = background;
           document.querySelector(".particles-background").style.opacity = 1;
           for (var i = 0; i < 4; i++) {
             var canvas = document.getElementById("canvas_" + i);
@@ -398,7 +422,7 @@ function assemblePage() {
     translateX: "-200%",
   });
   anime.set(".menu-btn", {
-    translateX: "100%",
+    translateX: "200%",
   });
   anime.set(".welcome-drawer button", {
     translateX: "400%",
@@ -710,7 +734,7 @@ function handleClick(index, buttonClicked) {
         anime({
           duration: 1500,
           update: () => {
-            ctx.fillStyle = "#ff6445";
+            ctx.fillStyle = secondary;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             if (raysAnimation.progress < 99) {
               raysAnimation.animatables.forEach(function (animatable) {

@@ -5,6 +5,7 @@ import dio_img from "../images/projects/dio.png";
 import wog_img from "../images/projects/word_of_god.png";
 import rain_alert_img from "../images/projects/rain_alert.png";
 import traffic_model_img from "../images/projects/ivi_lab.jpg";
+import rutgers_img from "../images/projects/rutgers.png";
 import dio_game_1 from "../images/projects/dio_game_1.JPG";
 import dio_game_2 from "../images/projects/dio_game_2.JPG";
 import wog_game_1 from "../images/projects/wog_game_1.JPG";
@@ -12,7 +13,10 @@ import wog_game_2 from "../images/projects/wog_game_2.JPG";
 import rain_app_1 from "../images/projects/rain_alert_1.JPG";
 import rain_app_2 from "../images/projects/rain_alert_2.JPG";
 import traffic_model_1 from "../images/projects/traffic_model.JPG";
-import traffic_model_2 from "../images/projects/decision_tree.JPG";
+import traffic_model_2 from "../images/projects/behavior_tree.JPG";
+import traffic_demo from "../videos/traffic_demo.mp4";
+import transit_app_1 from "../images/projects/transit_app_1.jpg";
+import transit_app_2 from "../images/projects/transit_app_2.png";
 
 class Projects extends Component {
   constructor(props) {
@@ -146,6 +150,51 @@ class Projects extends Component {
               <figcaption>
                 Behavior tree that controls agent behavior made with xNode
               </figcaption>
+
+              <video src={traffic_demo} controls />
+            </div>
+          ),
+        },
+        {
+          caption: "Transit App",
+          img: rutgers_img,
+          id: "transit-app",
+          header: "Transit Mobile Application",
+          tags: [
+            "React Native",
+            "Javascript",
+            "MongoDB",
+            "Google Maps API",
+            "REST API",
+          ],
+          code: null,
+          project: null,
+          body: (
+            <div className="modal-body-description">
+              <p>
+                I created a mobile application that reports live transit data
+                from an autonomous bus service to passengers. I used React
+                Native and Google Maps API to create the user interface of the
+                application.
+              </p>
+              <img src={transit_app_1} alt="Application interface" />
+              <figcaption>Application interface</figcaption>
+
+              <p>
+                The backend of the application uses a MongoDB server and a web
+                API to store and manage static transit data in the GTFS format.
+                Data from the server is sent to the application and restructured
+                into a framework I designed in order to allow for more efficient
+                data search and retrieval.
+              </p>
+              <img src={transit_app_2} alt="Basic component class structure" />
+              <figcaption>Basic component class structure</figcaption>
+
+              <p>
+                This project is in partnership with an autonomous bus company
+                and will eventually be available on app stores for their
+                passengers to download and use.
+              </p>
             </div>
           ),
         },
@@ -256,7 +305,7 @@ class Projects extends Component {
 
   renderModalBtns(modal) {
     var buttons = [];
-    var codeCaption = modal.code == null ? "Code unavailable" : "View code";
+    var codeCaption = modal.code == null ? "Private code" : "View code";
     var codeClassModifier = modal.code == null ? " unavailable" : "";
     buttons.push(
       <button className={"modal-btn" + codeClassModifier} key="view-source-btn">
@@ -285,6 +334,8 @@ class Projects extends Component {
   }
 
   componentDidMount() {
+    Modal.setAppElement("body");
+
     // lighting effects
     window.addEventListener("scroll", () => {
       this.onScroll();
@@ -333,7 +384,8 @@ class Projects extends Component {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              height: "80vh",
+              padding: 0,
+              paddingBottom: "1rem",
             },
           }}
         >

@@ -33,20 +33,6 @@ class About extends Component {
   }
 
   componentDidMount() {
-    // var button = document.querySelector(".accordion-btn");
-    // button.addEventListener("click", () => {
-    //   var content = button.nextElementSibling;
-    //   button.classList.toggle("accordion-btn--active");
-
-    //   if (button.classList.contains("accordion-btn--active")) {
-    //     content.style.height = content.scrollHeight + "px";
-    //     button.innerHTML = "Ok, TMI!";
-    //   } else {
-    //     content.style.height = 0;
-    //     button.innerHTML = "Find out more";
-    //   }
-    // });
-
     window.addEventListener("scroll", () => {
       this.onScroll();
     });
@@ -71,7 +57,7 @@ class About extends Component {
             <img src={profile_picture} alt="Profile"></img>
             <div className="about-description">
               <p>
-                Hello! I'm Jeffrey, a computer scientist based in Princeton, New
+                Hi, I'm Jeffrey, a computer scientist based in Princeton, New
                 Jersey. I am currently an undergraduate at Rutgers University. I
                 enjoy designing and implementing complex applications that
                 tackle all sorts of technological challenges. My primary

@@ -3,16 +3,16 @@
 }
 
 .ReactModal__Content {
-  width: 80%;
+  width: 90%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  padding: 0;
   z-index: 0;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 1200px) {
   .ReactModal__Content {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid black;
+  padding-left: 1rem;
 }
 
 .modal-header h1 {
@@ -51,8 +52,8 @@
   font-size: 30px;
   font-weight: bold;
   position: absolute;
-  top: 5%;
-  right: 5%;
+  top: 1rem;
+  right: 1rem;
 }
 
 .project-info {
@@ -67,13 +68,14 @@
   flex-wrap: wrap;
 }
 
-.tag-container div {
+.project-tag {
   box-sizing: content-box;
   border: 2px solid red;
   border-radius: 5px;
-  padding: 0.3rem;
+  padding: 0.3rem 0.5rem;
   margin: 0;
-  margin-right: 2%;
+  margin-right: 0.7rem;
+  margin-bottom: 0.7rem;
   text-align: center;
 }
 
@@ -85,12 +87,8 @@
 }
 
 .modal-btn {
-  width: 7vw;
-  min-width: 50px;
-  max-width: 75px;
-  height: 7vw;
-  min-height: 50px;
-  max-height: 75px;
+  width: 50px;
+  height: 50px;
   border: none;
   outline: none;
   border-radius: 50%;
@@ -113,24 +111,11 @@
 
 .modal-btn i {
   color: #5aa1f2;
-  font-size: 3vw;
+  font-size: 20px;
 }
 
-.modal-btn.unavailable i,
-.modal-btn.unavailable .btn-caption {
+.modal-btn.unavailable i {
   color: #b5b5b5;
-}
-
-@media (max-width: 700px) {
-  .modal-btn i {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 1070px) {
-  .modal-btn i {
-    font-size: 35px;
-  }
 }
 
 .btn-caption {
@@ -139,14 +124,17 @@
   font-weight: 600;
   position: absolute;
   width: 200%;
-  bottom: 0;
   left: 50%;
-  transform: translate(-50%, 100%);
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
 @media (hover: hover) {
+  .btn-caption {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .modal-btn:hover .btn-caption {
     opacity: 1;
   }
@@ -154,6 +142,8 @@
 
 @media (hover: none) {
   .btn-caption {
+    bottom: 0;
+    transform: translate(-50%, 100%);
     opacity: 1;
   }
 }
@@ -212,13 +202,28 @@
   width: 500px;
 }
 
+.modal-body-description video {
+  width: 700px;
+}
+
 @media (max-width: 700px) {
-  .modal-body-description p {
-    font-size: 18px;
-    margin: 2rem 0;
+  .modal-body-description img {
+    width: 100%;
   }
 
-  .modal-body-description img {
+  .modal-body-description p {
+    margin: 2rem 1rem;
+  }
+}
+
+@media (max-width: 875px) {
+  .modal-body-description video {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .ReactModal__Content {
     width: 100%;
   }
 }

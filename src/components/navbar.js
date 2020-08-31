@@ -7,8 +7,17 @@ class Navbar extends Component {
     var navbar = document.getElementById("navbar");
     var scrollPosition = window.scrollY;
 
-    if (scrollPosition === 0) navbar.style.opacity = 0;
-    else navbar.style.opacity = 1;
+    if (scrollPosition === 0) {
+      navbar.style.opacity = 0;
+      document.querySelectorAll(".navbar-link").forEach((anchor) => {
+        anchor.style.pointerEvents = "none";
+      });
+    } else {
+      navbar.style.opacity = 1;
+      document.querySelectorAll(".navbar-link").forEach((anchor) => {
+        anchor.style.pointerEvents = "all";
+      });
+    }
   }
 
   onClick(e, link) {

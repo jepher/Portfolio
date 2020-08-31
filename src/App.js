@@ -22,6 +22,18 @@ const Resume = React.lazy(() => import("./components/resume"));
 const Contact = React.lazy(() => import("./components/contact"));
 
 function App() {
+  var particle1 = getComputedStyle(document.documentElement).getPropertyValue(
+    "--particle1"
+  );
+  var particle2 = getComputedStyle(document.documentElement).getPropertyValue(
+    "--particle4"
+  );
+  var particle3 = getComputedStyle(document.documentElement).getPropertyValue(
+    "--particle3"
+  );
+  var particle4 = getComputedStyle(document.documentElement).getPropertyValue(
+    "--particle4"
+  );
   return (
     <div className="content">
       <Particles
@@ -36,7 +48,7 @@ function App() {
               },
             },
             color: {
-              value: ["#4fa9f0", "#3de2f5", "#008cff", "#313ff7"],
+              value: [particle1, particle2, particle3, particle4],
             },
             lineLinked: {
               enable: false,

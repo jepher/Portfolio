@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Timeline from "./timeline";
 import Skillset from "./skillset";
 
+import resume from "../documents/resume.pdf";
 import java_icon from "../images/resume/java_icon.png";
 import python_icon from "../images/resume/python_icon.png";
 import c_sharp_icon from "../images/resume/c_sharp_icon.png";
@@ -69,6 +70,14 @@ class Resume extends Component {
             <h1 className="section-title-shadow">Resume</h1>
             <h1 className="section-title-text">Resume</h1>
           </div>
+
+          <a className="download-link" href={resume} download>
+            <div className="download-btn">
+              <i className="fas fa-file-download" />
+            </div>
+            <div className="download-btn-caption">Download</div>
+          </a>
+
           <h2 className="resume-header">Education</h2>
           <div className="resume-education">
             <h4>Rutgers University - New Brunswick</h4>

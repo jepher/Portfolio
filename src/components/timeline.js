@@ -52,7 +52,7 @@ class Timeline extends Component {
           organization: "IVI Lab",
           page: "https://ivi.cs.rutgers.edu/",
           position: "Undergraduate Research Fellow",
-          time: "Jan 2019 - Present",
+          time: "Jan - Jun 2020",
           description: [
             <li key="ivi-1">
               Worked under post doctorate researcher to create a 3D traffic
@@ -62,6 +62,24 @@ class Timeline extends Component {
             <li key="ivi-2">
               Designed and implemented behavior tree for driver-driver and
               driver-traffic light interactions
+            </li>,
+          ],
+        },
+        {
+          organization: "Rutgers Research Project Team",
+          page: null,
+          position: "Part-time Undergraduate Programmer",
+          time: "Jun 2020 - Present",
+          description: [
+            <li key="aresty-1">
+              Worked with a research project team and public transportation
+              company to create a mobile app that allows users to track and
+              interact with an autonomous transit system
+            </li>,
+            <li key="aresty-2">
+              Created application front end using React Native and used Google
+              Maps API, OpenTripPlanner, and MongoDB backend to create a
+              client-side data management system
             </li>,
           ],
         },
@@ -156,6 +174,9 @@ class Timeline extends Component {
             </li>
             <li>
               <button data-id="2">IVI Lab</button>
+            </li>
+            <li>
+              <button data-id="3">Rutgers Research</button>
             </li>
           </ul>
         </div>

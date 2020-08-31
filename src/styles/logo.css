@@ -3,8 +3,8 @@
   border: none;
   background: none;
   padding: 0;
-  width: 5vh;
-  height: 5vh;
+  width: 3.5rem;
+  height: 3.5rem;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: white;
+  color: var(--primary-text);
   font-family: "Nunito";
   position: absolute;
   display: inline-flex;
@@ -35,7 +35,7 @@
 .logo-side {
   width: 2px;
   height: 1.7rem;
-  background: #059bf2;
+  background: var(--logo-outline-fill);
   transition: transform 0.3s ease-in-out;
   --translate: 1.4rem;
   transform: translateX(calc(var(--direction) * var(--translate))) scale(0);
@@ -47,7 +47,7 @@
   content: "";
   width: 2px;
   height: 1.7rem;
-  background: #059bf2;
+  background: var(--logo-outline-fill);
   position: absolute;
   --angle: 60deg;
   transition: transform 0.2s ease-in-out;
@@ -123,13 +123,13 @@
 }
 
 .logo-outline .logo-side {
-  background: #b5b5b5;
+  background: var(--logo-outline);
   transform: translateX(calc(var(--direction) * var(--translate))) scale(1);
 }
 
 .logo-outline .logo-side:before,
 .logo-outline .logo-side:after {
-  background: #b5b5b5;
+  background: var(--logo-outline);
   transform: translateX(-50%) rotate(calc(var(--direction) * var(--angle)))
     scale(1);
 }
