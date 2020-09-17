@@ -7,6 +7,7 @@ import resume from "../documents/resume.pdf";
 import java_icon from "../images/resume/java_icon.png";
 import python_icon from "../images/resume/python_icon.png";
 import c_sharp_icon from "../images/resume/c_sharp_icon.png";
+import c_icon from "../images/resume/c_icon.png";
 import javascript_icon from "../images/resume/javascript_icon.png";
 import html_icon from "../images/resume/html_icon.png";
 import css_icon from "../images/resume/css_icon.png";
@@ -99,11 +100,13 @@ class Resume extends Component {
                 [java_icon, "java"],
                 [python_icon, "python"],
                 [c_sharp_icon, "c#"],
+                [c_icon, "c"],
               ]}
               skills={[
                 ["Java", 90],
                 ["Python", 85],
                 ["C#", 80],
+                ["C", 50],
               ]}
             ></Skillset>
 
