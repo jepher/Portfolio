@@ -24,16 +24,16 @@ const Contact = React.lazy(() => import("./components/contact"));
 function App() {
   var particle1 = getComputedStyle(document.documentElement).getPropertyValue(
     "--particle1"
-  );
+  ).trim();
   var particle2 = getComputedStyle(document.documentElement).getPropertyValue(
     "--particle4"
-  );
+  ).trim();
   var particle3 = getComputedStyle(document.documentElement).getPropertyValue(
     "--particle3"
-  );
+  ).trim();
   var particle4 = getComputedStyle(document.documentElement).getPropertyValue(
     "--particle4"
-  );
+  ).trim();
   return (
     <div className="content">
       <Particles
@@ -48,7 +48,7 @@ function App() {
               },
             },
             color: {
-              value: [particle1, particle2, particle3, particle4],
+              value: [particle1, particle2, particle3, particle4]
             },
             lineLinked: {
               enable: false,

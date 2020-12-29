@@ -66,19 +66,6 @@ class About extends Component {
                 to life and create products that will improve the lives of
                 others.
               </p>
-              {/* <div className="accordion-container">
-                <button className="accordion-btn">Find out more</button>
-                <div className="about-more-container">
-                  <p>
-                    I grew up in New Jersey, but my family is from China, so I
-                    can speak and understand Chinese. I enjoy arts and crafts
-                    and have done origami, pencil drawing, and painting in the
-                    past. I often play around in Adobe Photoshop and Illustrator
-                    to make funny pictures. In my free time, I like to play
-                    basketball, piano, and video games.
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

@@ -33,34 +33,12 @@
   color: #4a4a4a;
 }
 
-.download-link {
-  text-decoration: none;
-  color: black;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.download-btn {
-  width: 35px;
-  height: 35px;
-  background-color: white;
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.download-btn i {
-  font-size: 18px;
-}
-
-.download-btn-caption {
-  margin-left: 10px;
-  font-size: 20px;
+.resume-link {
   color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
 }
 
 .resume-header {
@@ -82,6 +60,7 @@
 }
 
 .resume-container hr {
+  border: none;
   border-top: 3px solid #e22947;
   width: 60%;
   margin: 3rem 0;
@@ -89,7 +68,21 @@
 
 .resume-education {
   width: 80%;
-  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-education-container {
+  width: "100%";
+  padding: 0 2rem;
+}
+
+.education-header {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .resume-education h4 {
@@ -99,7 +92,10 @@
 
 .resume-education h5 {
   font-family: "IBMPlexSans";
-  margin-top: 0.3rem;
+}
+
+.resume-education p {
+  margin: 0;
 }
 
 .timeline-container {
@@ -107,6 +103,7 @@
   width: 80%;
   height: 250px;
   display: flex;
+  align-items: center;
 }
 
 .timeline-selected {
@@ -115,6 +112,7 @@
   left: 0;
   background: #ed4040;
   transition: transform 0.3s;
+  z-index: 1;
 }
 
 .timeline {
@@ -137,17 +135,16 @@
 
 .timeline li {
   width: 100%;
-  flex-grow: 1;
+  flex: 1;
   min-height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 
 .timeline button {
+  position: absolute;
   width: 100%;
-  height: 100%;
-  padding: 0;
+  top: 0;
+  bottom: 0;
   outline: none;
   border: none;
   border-left: 2px solid gray;
@@ -339,9 +336,25 @@
   position: relative;
 }
 
+@media (max-width: 470px) {
+  .resume-education-container {
+    padding: 0 1rem;
+  }
+  .resume-education-container p {
+    font-size: 12px;
+  }
+  .education-header {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 800px) {
   .progress-bar-container {
     width: 80%;
+  }
+
+  .resume-education {
+    width: 100%;
   }
 }
 

@@ -95,7 +95,7 @@ class Landing extends Component {
         (window.innerHeight * 0.4);
     } else avatar.style.opacity = 0;
 
-    if (this.state.windowWidth < 800) {
+    if (this.state.windowWidth < 800) { // mobile
       if (landing.bottom >= window.innerHeight * 0.6) {
         var translateAmount =
           -20 +
@@ -103,6 +103,9 @@ class Landing extends Component {
             (landing.bottom - window.innerHeight * 0.6) /
               (window.innerHeight * 0.4)) *
             200;
+        console.log(landing.bottom);
+        console.log(window.innerHeight);
+        console.log(translateAmount);
         avatar.style.transform = "translate(" + translateAmount + "%, 30%)";
       } else avatar.style.transform = "translate(200%, 30%)";
     } else avatar.style.transform = "translate(-20%, 30%)";

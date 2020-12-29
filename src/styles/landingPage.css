@@ -300,7 +300,7 @@
   }
 
   .welcome-text {
-    top: 5%;
+    top: 8%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

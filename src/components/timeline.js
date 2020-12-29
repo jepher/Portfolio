@@ -39,8 +39,9 @@ class Timeline extends Component {
               making
             </li>,
             <li key="ruautonomous-2">
-              Used Tensorflow object detection API to create model that locates
-              and identifies mission targets from camera feed
+              Prepared custom dataset and trained multiclass object detection 
+              model with Tensorflow object detection API to locate and identify 
+              mission targets in-flight
             </li>,
             <li key="ruautonomous-3">
               Optimized data communication protocols between drone and ground

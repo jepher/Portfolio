@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Timeline from "./timeline";
 import Skillset from "./skillset";
 
-import resume from "../documents/resume.pdf";
 import java_icon from "../images/resume/java_icon.png";
 import python_icon from "../images/resume/python_icon.png";
 import c_sharp_icon from "../images/resume/c_sharp_icon.png";
@@ -72,19 +71,21 @@ class Resume extends Component {
             <h1 className="section-title-text">Resume</h1>
           </div>
 
-          <a className="download-link" href={resume} download>
-            <div className="download-btn">
-              <i className="fas fa-file-download" />
-            </div>
-            <div className="download-btn-caption">Download</div>
+          <a className="resume-link" href={"https://drive.google.com/file/d/1uB3IThOHYVoApysnd13Eu3X96lzOV5k1/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
+            Resume PDF
           </a>
 
           <h2 className="resume-header">Education</h2>
           <div className="resume-education">
-            <h4>Rutgers University - New Brunswick</h4>
-            <h5>Class of 2023</h5>
-            <p>Computer Science, B.S.</p>
-            <p>GPA: 4.00 / 4.00</p>
+            <div className="resume-education-container">
+              <div className="education-header">
+                <h4>Rutgers University - New Brunswick</h4>
+                <h5>Class of 2023</h5>
+              </div>
+              <p style={{  wordWrap: "break-word"}}>Bachelor of Science in Computer Science and Economics</p>
+              <p>Minor in Mathematics</p>
+              <p style={{marginTop:"1rem"}}>GPA: 4.00</p>
+            </div>
           </div>
 
           <hr />

@@ -17,6 +17,9 @@ import traffic_model_2 from "../images/projects/behavior_tree.JPG";
 import traffic_demo from "../videos/traffic_demo.mp4";
 import transit_app_1 from "../images/projects/transit_app_1.jpg";
 import transit_app_2 from "../images/projects/transit_app_2.png";
+import econ_grapher_img from "../images/projects/econ_grapher.jpg";
+import econ_grapher_1 from "../images/projects/econ_grapher_1.JPG";
+import econ_grapher_2 from "../images/projects/econ_grapher_2.JPG";
 
 class Projects extends Component {
   constructor(props) {
@@ -195,6 +198,33 @@ class Projects extends Component {
                 and will eventually be available on app stores for their
                 passengers to download and use.
               </p>
+            </div>
+          ),
+        },
+        {
+          caption: "Econ Grapher",
+          img: econ_grapher_img,
+          id: "econ-grapher",
+          header: "Economics Grapher",
+          tags: ["React", "Web Development"],
+          code: "https://github.com/jepher/econGrapher",
+          project: "https://jepher.github.io/econGrapher",
+          body: (
+            <div className="modal-body-description">
+              <p>
+                I created an interactive graphing tool to visualize the different 
+                models covered in my macroeconomics class. I used React and the Chart.js 
+                library to create this website.
+              </p>
+              <img src={econ_grapher_1} style={{width: "70%"}} alt="Solow model" />
+
+              <p>
+                The models featured on the site are the Solow model, aggregate demand and 
+                supply model, and the saving and investment model. The user inputs values 
+                for economic variables and the graph calculates and displays the economy's 
+                equilibrium conditions.
+              </p>
+              <img src={econ_grapher_2} style={{width: "70%"}} alt="Aggregate demand / supply model" />
             </div>
           ),
         },
