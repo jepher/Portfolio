@@ -33,6 +33,10 @@
   color: #4a4a4a;
 }
 
+.download-icon {
+  margin-top: 0.5rem;
+}
+
 .resume-link {
   color: white;
   display: flex;
@@ -73,7 +77,8 @@
 }
 
 .resume-education-container {
-  width: "100%";
+  width: 80%;
+  max-width: 600px;
   padding: 0 2rem;
 }
 
@@ -82,16 +87,16 @@
   flex-direction: row;
   align-content: flex-start;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-.resume-education h4 {
+.resume-education h2 {
   font-family: "IBMPlexSans";
-  margin-bottom: 0;
 }
 
-.resume-education h5 {
+.resume-education h3 {
   font-family: "IBMPlexSans";
+  align-self: flex-end;
 }
 
 .resume-education p {
@@ -101,7 +106,7 @@
 .timeline-container {
   position: relative;
   width: 80%;
-  height: 250px;
+  height: 300px;
   display: flex;
   align-items: center;
 }
@@ -196,6 +201,20 @@
   font-size: 1.1rem;
 }
 
+@media (max-width: 1400px) and (min-width: 671px){
+  .timeline-container {
+    min-height: 500px;
+  }
+
+  .timeline-selected, .timeline li {
+    min-height: 70px;
+  }
+
+  .timeline-description {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 670px) {
   .timeline-container {
     height: unset;
@@ -203,13 +222,15 @@
   }
   .timeline {
     width: 100%;
-    height: 3rem;
+    height: 5rem;
     overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .timeline-selected {
     min-width: 140px;
     min-height: initial;
+    max-height: 2px;
   }
 
   .timeline ul {
@@ -225,6 +246,7 @@
   .timeline button {
     border-left: none;
     border-bottom: 2px solid gray;
+    font-size: 0.8rem;
   }
 }
 

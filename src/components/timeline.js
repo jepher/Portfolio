@@ -1,4 +1,27 @@
 import React, { Component } from "react";
+import resume from "../files/resume.pdf";
+import { pdfjs } from "react-pdf";
+
+// stuff I can't fit on my resume
+const unlisted_events = [
+  {
+    organization: "NYU CREATE Lab",
+    position: "Project Leader",
+    time: "Aug 2019 - Sep 2019",
+    description: [
+      <li key="create-1">
+        Led a 3-person team to design a 2D platform game in Javascript
+      </li>,
+      <li key="create-2">
+        Wrote storyline, sourced characters and maps, implemented game
+        loop with the Phaser library
+      </li>,
+      <li key="create-3">
+        Received and incorporated feedback from professional game developers at the CREATE Lab
+      </li>,
+    ],
+  }
+]
 
 class Timeline extends Component {
   constructor(props) {
@@ -7,90 +30,78 @@ class Timeline extends Component {
     this.state = {
       windowWidth: 0,
       currentEvent: 0,
-      events: [
-        {
-          organization: "NYU CREATE Lab",
-          page: "https://create.nyu.edu/",
-          position: "Project Manager",
-          time: "Aug - Sep 2019",
-          description: [
-            <li key="create-1">
-              Led a 3-person team to design a 2D platform game in Javascript
-            </li>,
-            <li key="create-2">
-              Wrote storyline, designed characters and maps, programmed game
-              loop
-            </li>,
-            <li key="create-3">
-              Worked with professional game developers to receive and
-              incorporate feedback
-            </li>,
-          ],
-        },
-        {
-          organization: "RUAutonomous",
-          page: "https://aiaa.rutgers.edu/proj2.html",
-          position: "Imaging Subteam",
-          time: "Sep 2019 - Present",
-          description: [
-            <li key="ruautonomous-1">
-              Collaborating with a 7-person team collect and analyze image and
-              telemetry data from drone in order to achieve autonomous decision
-              making
-            </li>,
-            <li key="ruautonomous-2">
-              Prepared custom dataset and trained multiclass object detection 
-              model with Tensorflow object detection API to locate and identify 
-              mission targets in-flight
-            </li>,
-            <li key="ruautonomous-3">
-              Optimized data communication protocols between drone and ground
-              server through data compression
-            </li>,
-          ],
-        },
-        {
-          organization: "IVI Lab",
-          page: "https://ivi.cs.rutgers.edu/",
-          position: "Undergraduate Research Fellow",
-          time: "Jan - Jun 2020",
-          description: [
-            <li key="ivi-1">
-              Worked under post doctorate researcher to create a 3D traffic
-              behavior model in Unity that simulates pathfinding and collision
-              avoidance behavior of drivers
-            </li>,
-            <li key="ivi-2">
-              Designed and implemented behavior tree for driver-driver and
-              driver-traffic light interactions
-            </li>,
-          ],
-        },
-        {
-          organization: "Rutgers Research Project Team",
-          page: null,
-          position: "Part-time Undergraduate Programmer",
-          time: "Jun 2020 - Present",
-          description: [
-            <li key="aresty-1">
-              Worked with a research project team and public transportation
-              company to create a mobile app that allows users to track and
-              interact with an autonomous transit system
-            </li>,
-            <li key="aresty-2">
-              Created application front end using React Native and used Google
-              Maps API, OpenTripPlanner, and MongoDB backend to create a
-              client-side data management system
-            </li>,
-          ],
-        },
-      ],
+      events: []
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
   }
 
-  componentDidMount() {
+  async parseResume(){
+    pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
+    const doc = await pdfjs.getDocument(resume).promise;
+    const page = await doc.getPage(1);
+    const content = await page.getTextContent();
+    var parsing = false;
+    var experienceStr = "";
+    for(var item of content.items) {
+      if(item.str === "PROJECTS")
+        break;
+      if(parsing){
+        experienceStr += item.str;
+        if(item.str === '' && item.hasEOL)
+        experienceStr += "\n"
+      }
+      if(item.str === "EXPERIENCE")
+        parsing = true;
+    }
+
+    var lines = experienceStr.split('\n');
+    var events = [];
+    var currentExperience = null;
+    var currentBullet = "";
+    for(var line of lines) {
+      // identify new event by matching a time period regex (ex: Jan xxxx - Dec xxxx)
+      var duration = line.match(/\w{3}\s\d{4}\s?–\s?(\w{3}\s\d{4}||Present)$/);
+      if(duration){
+        if(currentExperience)
+          events.push(currentExperience);
+        currentExperience = {description: []};
+        currentExperience.time = duration[0];
+        currentExperience.organization = line.substring(0, line.indexOf(","));
+        line = line.substring(line.indexOf(",") + 2);
+        currentExperience.position = line.replace(duration[0], '');
+      }
+      // still parsing description of current event
+      else{
+        // new bullet
+        if(line.match(/^•/)){
+          if(currentBullet){
+            currentExperience.description.push(
+            <li key={["timeline-", events.length, currentExperience.description.length].join("-")}>
+              {currentBullet}
+            </li>);
+          }
+          currentBullet = line.substring(2);
+        }
+        else
+          currentBullet += " " + line
+      }
+    }
+    if(currentBullet){
+      currentExperience.description.push(
+      <li key={["timeline-", events.length, currentExperience.description.length].join("-")}>
+        {currentBullet}
+      </li>);
+    }
+    if(currentExperience)
+      events.push(currentExperience);
+    return events;
+  }
+
+  async componentDidMount() {
+    var events = await this.parseResume();
+    this.setState({ events: events.concat(unlisted_events)});
+    
     const buttons = document.querySelectorAll(".timeline button");
     for (let button of buttons) {
       button.addEventListener("click", () => {
@@ -165,41 +176,35 @@ class Timeline extends Component {
         <div className="timeline">
           {this.renderSelectedBar(window.innerWidth)}
           <ul>
-            <li>
-              <button className="active" data-id="0">
-                NYU CREATE
-              </button>
-            </li>
-            <li>
-              <button data-id="1">RUAutonomous</button>
-            </li>
-            <li>
-              <button data-id="2">IVI Lab</button>
-            </li>
-            <li>
-              <button data-id="3">Rutgers Research</button>
-            </li>
+            {this.state.events.map((event, i) => 
+              (<li key={"event-" + i}>
+                <button className={i === 0 ? "active" : null} data-id={i}>
+                  {event.organization}
+                </button>
+              </li>)
+            )}
           </ul>
         </div>
 
-        <div className="timeline-description">
-          <div className="timeline-event-title">
-            <span className="timeline-description-position">
-              {currentEvent.position}
-            </span>{" "}
-            @{" "}
-            <a
-              className="timeline-description-organization"
-              href={currentEvent.page}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {currentEvent.organization}
-            </a>
+        {currentEvent && <div className="timeline-description">
+            <div className="timeline-event-title">
+              <span className="timeline-description-position">
+                {currentEvent.position}
+              </span>{" "}
+              @{" "}
+              <a
+                className="timeline-description-organization"
+                href={currentEvent.page}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {currentEvent.organization}
+              </a>
+            </div>
+            <div className="timeline-event-duration">{currentEvent.time}</div>
+            <ul>{currentEvent.description}</ul>
           </div>
-          <div className="timeline-event-duration">{currentEvent.time}</div>
-          <ul>{currentEvent.description}</ul>
-        </div>
+        }
       </div>
     );
   }

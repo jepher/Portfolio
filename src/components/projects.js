@@ -234,6 +234,7 @@ class Projects extends Component {
   }
 
   onScroll() {
+    if(!this.selector.current) return;
     var projects = this.selector.current.getBoundingClientRect();
     var spotlights = document.querySelectorAll(".spotlight");
     var beams = document.querySelectorAll(".beam-container");

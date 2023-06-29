@@ -1,5 +1,5 @@
 .navbar {
-  background: var(--primary);
+  background: var(--secondary);
   z-index: 4;
   opacity: 1;
   height: 4rem;

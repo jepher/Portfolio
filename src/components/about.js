@@ -9,6 +9,7 @@ class About extends Component {
   }
 
   onScroll() {
+    if(!this.selector.current) return;
     var about = this.selector.current.getBoundingClientRect();
     var textShadow = document.querySelector(
       "#about-title .section-title-shadow"
@@ -58,13 +59,11 @@ class About extends Component {
             <div className="about-description">
               <p>
                 Hi, I'm Jeffrey, a computer scientist based in Princeton, New
-                Jersey. I am currently an undergraduate at Rutgers University. I
-                enjoy designing and implementing complex applications that
-                tackle all sorts of technological challenges. My primary
-                interests are software engineering, web development, and machine
-                learning. My goal is to use computer science to bring my ideas
-                to life and create products that will improve the lives of
-                others.
+                Jersey. I graduated from Rutgers University in 2023. I
+                enjoy designing and implementing technological solutions to complex 
+                and challenging problems, which is what got me into programming in 
+                the first place. My primary interests are software engineering, web 
+                development, and game development. 
               </p>
             </div>
           </div>

@@ -85,6 +85,7 @@ class Landing extends Component {
   }
 
   onScroll() {
+    if(!this.selector.current) return;
     var landing = this.selector.current.getBoundingClientRect();
     var avatar = document.querySelector(".avatar");
 

@@ -17,6 +17,7 @@ import android_studio_icon from "../images/resume/android_studio_icon.png";
 import mongodb_icon from "../images/resume/mongodb_icon.png";
 import tf_icon from "../images/resume/tf_icon.png";
 import git_icon from "../images/resume/git_icon.png";
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 class Resume extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Resume extends Component {
   }
 
   onScroll() {
+    if(!this.selector.current) return;
     var resume = this.selector.current.getBoundingClientRect();
     var textShadow = document.querySelector(
       "#resume-title .section-title-shadow"
@@ -72,19 +74,19 @@ class Resume extends Component {
           </div>
 
           <a className="resume-link" href={"https://drive.google.com/file/d/1uB3IThOHYVoApysnd13Eu3X96lzOV5k1/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
-            Resume PDF
+            <GetAppIcon className="download-icon"/> Download
           </a>
 
           <h2 className="resume-header">Education</h2>
           <div className="resume-education">
             <div className="resume-education-container">
               <div className="education-header">
-                <h4>Rutgers University - New Brunswick</h4>
-                <h5>Class of 2023</h5>
+                <h2>Rutgers University - New Brunswick</h2>
+                <h3>Class of 2023</h3>
               </div>
               <p style={{  wordWrap: "break-word"}}>Bachelor of Science in Computer Science and Economics</p>
               <p>Minor in Mathematics</p>
-              <p style={{marginTop:"1rem"}}>GPA: 4.00</p>
+              <p style={{marginTop:"1rem"}}>GPA: 3.91</p>
             </div>
           </div>
 
