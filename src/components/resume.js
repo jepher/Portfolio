@@ -19,6 +19,8 @@ import tf_icon from "../images/resume/tf_icon.png";
 import git_icon from "../images/resume/git_icon.png";
 import GetAppIcon from '@material-ui/icons/GetApp';
 
+import resume_pdf from '../files/resume.pdf';
+
 class Resume extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +75,7 @@ class Resume extends Component {
             <h1 className="section-title-text">Resume</h1>
           </div>
 
-          <a className="resume-link" href={"https://drive.google.com/file/d/1uB3IThOHYVoApysnd13Eu3X96lzOV5k1/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
+          <a className="resume-link" href={resume_pdf} target="_blank" rel="noopener noreferrer">
             <GetAppIcon className="download-icon"/> Download
           </a>
 
